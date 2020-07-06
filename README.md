@@ -24,16 +24,16 @@ require "pmn"
 # Emit a PMN string
 
 some_moves = [
-  {52, 36, "♙", nil},
-  {12, 28, "♟", nil},
-  {53, 37, "♙", nil}
+  [52, 36, "♙", nil],
+  [12, 28, "♟", nil],
+  [53, 37, "♙", nil]
 ]
 
 PMN.dump(*some_moves) # => "52,36,♙.12,28,♟.53,37,♙"
 
 # Parse a PMN string
 
-PMN.parse("52,36,♙.12,28,♟.53,37,♙") # => [{52, 36, "♙", nil}, {12, 28, "♟", nil}, {53, 37, "♙", nil}]
+PMN.parse("52,36,♙.12,28,♟.53,37,♙") # => [[52, 36, "♙", nil], [12, 28, "♟", nil], [53, 37, "♙", nil]]
 ```
 
 ## Examples
@@ -41,27 +41,27 @@ PMN.parse("52,36,♙.12,28,♟.53,37,♙") # => [{52, 36, "♙", nil}, {12, 28, 
 ```crystal
 # Black castles on king-side
 
-PMN.dump({60, 62, "♔", nil, 63, 61, "♖", nil}) # => "60,62,♔;63,61,♖"
-PMN.parse("60,62,♔;63,61,♖") # => [{60, 62, "♔", nil, 63, 61, "♖", nil}]
+PMN.dump([60, 62, "♔", nil, 63, 61, "♖", nil]) # => "60,62,♔;63,61,♖"
+PMN.parse("60,62,♔;63,61,♖") # => [[60, 62, "♔", nil, 63, 61, "♖", nil]]
 
 # Promoting a chess pawn into a knight
 
-PMN.dump({12, 4, "♘", nil}) # => "12,4,♘"
-PMN.parse("12,4,♘") # => [{12, 4, "♘", nil}]
+PMN.dump([12, 4, "♘", nil]) # => "12,4,♘"
+PMN.parse("12,4,♘") # => [[12, 4, "♘", nil]]
 
 # Capturing a rook and promoting a shogi pawn
 
 PMN.dump([33, 24, "+P", "R"]) # => "33,24,+P,R"
-PMN.parse("33,24,+P,R") # => [{33, 24, "+P", "R"}]
+PMN.parse("33,24,+P,R") # => [[33, 24, "+P", "R"]]
 
 # Dropping a shogi pawn
 
-PMN.dump({nil, 42, "P", nil}) # => "*,42,P"
-PMN.parse("*,42,P") # => [{nil, 42, "P", nil}]
+PMN.dump([nil, 42, "P", nil]) # => "*,42,P"
+PMN.parse("*,42,P") # => [[nil, 42, "P", nil]]
 
 # Capturing a white chess pawn en passant
 
-PMN.dump({48, 32, "♙", nil}, {33, 32, "♟", nil, 32, 40, "♟", nil}) # => "48,32,♙.33,32,♟;32,40,♟"
+PMN.dump([48, 32, "♙", nil], [33, 32, "♟", nil, 32, 40, "♟", nil]) # => "48,32,♙.33,32,♟;32,40,♟"
 PMN.parse('48,32,♙.33,32,♟;32,40,♟') # => [[48, 32, "♙", nil], [33, 32, "♟", nil, 32, 40, "♟", nil]]
 ```
 
