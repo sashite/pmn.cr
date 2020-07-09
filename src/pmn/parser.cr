@@ -5,7 +5,7 @@ module PMN
   class Parser < Move
     def self.call(string : String)
       string.split(separator)
-            .map { |serialized_move| new(serialized_move).call }
+        .map { |serialized_move| new(serialized_move).call }
     end
 
     @serialized_actions : Array(String)
