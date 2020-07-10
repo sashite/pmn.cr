@@ -1,5 +1,7 @@
 # Portable Move Notation
 
+[![Build Status](https://travis-ci.org/sashite/pmn.cr.svg?branch=master)](https://travis-ci.org/sashite/pmn.cr)
+
 A Crystal interface for data serialization in [PMN](https://developer.sashite.com/specs/portable-move-notation) format.
 
 ## Installation
